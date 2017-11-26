@@ -22,6 +22,11 @@ public class LocalizedMatcher implements Matcher, ContainsExtraTypeInformation, 
         this.location = new LocationImpl();
     }
 
+    // Copied from org.hamcrest.BaseMatcher.
+    public void describeMismatch(Object item, Description description) {
+        description.appendText("was ").appendValue(item);
+    }
+
     public void _dont_implement_Matcher___instead_extend_BaseMatcher_() {
         // yeah right
     }

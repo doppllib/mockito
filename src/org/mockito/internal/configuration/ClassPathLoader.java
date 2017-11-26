@@ -7,7 +7,7 @@ package org.mockito.internal.configuration;
 import org.mockito.configuration.IMockitoConfiguration;
 import org.mockito.exceptions.base.MockitoException;
 import org.mockito.exceptions.misusing.MockitoConfigurationException;
-import org.mockito.internal.creation.CglibMockMaker;
+import org.mockito.internal.creation.ios.IosMockMaker;
 import org.mockito.internal.exceptions.stacktrace.DefaultStackTraceCleanerProvider;
 import org.mockito.plugins.MockMaker;
 import org.mockito.plugins.StackTraceCleanerProvider;
@@ -87,7 +87,7 @@ public class ClassPathLoader {
     /**
      * Returns the implementation of the mock maker available for the current runtime.
      *
-     * <p>Returns {@link CglibMockMaker} if no {@link MockMaker} extension exists
+     * <p>Returns {@link IosMockMaker} if no {@link MockMaker} extension exists
      * or is visible in the current classpath.</p>
      */
     public static MockMaker getMockMaker() {
@@ -95,7 +95,6 @@ public class ClassPathLoader {
     }
 
     public static StackTraceCleanerProvider getStackTraceCleanerProvider() {
-        //TODO we should throw some sensible exception if this is null.
         return stackTraceCleanerProvider;
     }
 
@@ -104,7 +103,7 @@ public class ClassPathLoader {
      * allowing mockito to run on alternative platforms like Android.
      */
     static MockMaker findPlatformMockMaker() {
-        return findPluginImplementation(MockMaker.class, new CglibMockMaker());
+        return findPluginImplementation(MockMaker.class, new IosMockMaker());
     }
 
     static <T> T findPluginImplementation(Class<T> pluginType, T defaultPlugin) {

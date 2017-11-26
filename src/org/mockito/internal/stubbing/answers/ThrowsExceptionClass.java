@@ -8,7 +8,6 @@ package org.mockito.internal.stubbing.answers;
 import org.mockito.internal.exceptions.stacktrace.ConditionalStackTraceFilter;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.objenesis.ObjenesisHelper;
 
 import java.io.Serializable;
 
@@ -24,7 +23,7 @@ public class ThrowsExceptionClass implements Answer<Object>, Serializable {
 
     public Object answer(InvocationOnMock invocation) throws Throwable {
 
-        Throwable throwable = (Throwable) ObjenesisHelper.newInstance(throwableClass);
+        Throwable throwable = (Throwable) throwableClass.newInstance();
         throwable.fillInStackTrace();
         filter.filter(throwable);
         throw throwable;
