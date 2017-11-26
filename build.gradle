@@ -21,7 +21,7 @@ allprojects {
 }
 
 group = 'co.doppl.org.mockito'
-version = '1.9.5.0'
+version = doppl_mockito_doppl
 
 apply plugin: 'java'
 apply plugin: 'maven-publish'
@@ -39,12 +39,9 @@ sourceSets {
     }*/
 }
 
-def javaCoreVersion = doppl_core_java
-def dopplCoreVersion = doppl_core_doppl
-
 dependencies {
-    compile 'junit:junit:4.12'
-    doppl 'co.doppl.junit:junit:4.12.0'
+    compile "junit:junit:$doppl_junit_java"
+    doppl "co.doppl.junit:junit:$doppl_junit_doppl"
 }
 
 ext.bintrayGitUrl = 'https://github.com/touchlab/mockito.git'
@@ -59,8 +56,4 @@ dopplConfig {
     skipTests = true
     generatedSourceDirs "src"
     mappingsInput="src/mockito.mappings"
-
-    /*translatePattern {
-        exclude '**//*package-info.java'
-    }*/
 }
