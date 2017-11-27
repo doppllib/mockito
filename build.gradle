@@ -55,5 +55,4 @@ test{
 dopplConfig {
     skipTests = true
     generatedSourceDirs "src"
-    mappingsInput="src/mockito.mappings"
 }
