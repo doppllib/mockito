@@ -8,7 +8,7 @@ iOS development with J2objc using the [Doppl build framework](http://doppl.co/).
 ```groovy
 dependencies {
     testCompile 'org.mockito:mockito-core:1.9.5'
-    testDoppl 'co.doppl.org.mockito:mockito-core:1.9.5.0'
+    testDoppl 'co.doppl.org.mockito:mockito-core:1.9.5.1'
 }
 ```
 
