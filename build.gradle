@@ -8,7 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.ltgt.gradle:gradle-apt-plugin:0.9'
-        classpath "co.doppl:gradle:${doppl_gradle_version}"
+        classpath "org.j2objcgradle:gradle:${doppl_gradle_version}"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
@@ -20,12 +20,12 @@ allprojects {
     }
 }
 
-group = 'co.doppl.org.mockito'
+group = 'org.j2objcgradle.org.mockito'
 version = doppl_mockito_doppl
 
 apply plugin: 'java'
 apply plugin: 'maven-publish'
-apply plugin: 'co.doppl.gradle'
+apply plugin: 'org.j2objcgradle.gradle'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -41,7 +41,7 @@ sourceSets {
 
 dependencies {
     compile "junit:junit:$doppl_junit_java"
-    doppl "co.doppl.junit:junit:$doppl_junit_doppl"
+    doppl "org.j2objcgradle.junit:junit:$doppl_junit_doppl"
 }
 
 ext.bintrayGitUrl = 'https://github.com/touchlab/mockito.git'
@@ -52,7 +52,7 @@ test{
     enabled = false
 }
 
-dopplConfig {
+j2objcConfig {
     skipTests = true
     generatedSourceDirs "src"
 }
